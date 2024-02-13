@@ -11,7 +11,7 @@ $(document).ready(function () {
             }
             else return true;
         },
-        " Please Enter at Least 1 Uppercase, 1 Lowercase, 1 Number,1 Special Character($,@),and 8 characters long",
+        "Please Enter at Least 1 Uppercase, 1 Lowercase, 1 Number,1 Special Character($,@),and 8 characters long"
     );
 
     $.validator.addMethod("email_validator", function (value) {
@@ -27,60 +27,6 @@ $(document).ready(function () {
         return /^[^-\s]/.test(value);
     });
 
-
-    // jQuery.validator.addMethod("duplicateemail", function (value) {
-
-    //     var result;
-    //     user_id = $("#userid").val()
-    //     $.ajax({
-    //         url:"/settings/users/checkemail",
-    //         type:"POST",
-    //         async:false,
-    //         data:{"email":value,"id":user_id,csrf:$("input[name='csrf']").val()},
-    //         datatype:"json",
-    //         caches:false,
-    //         success: function (data) {
-    //             result = data.trim();
-    //         }
-    //     })
-    //     return result.trim()!="true"
-    // })
-
-    // jQuery.validator.addMethod("duplicateusername", function (value) {
-
-    //     var result;
-    //     user_id = $("#userid").val()
-    //     $.ajax({
-    //         url:"/settings/users/checkusername",
-    //         type:"POST",
-    //         async:false,
-    //         data:{"username":value,"id":user_id,csrf:$("input[name='csrf']").val()},
-    //         datatype:"json",
-    //         caches:false,
-    //         success: function (data) {
-    //             result = data.trim();
-    //         }
-    //     })
-    //     return result.trim()!="true"
-    // })
-
-    // jQuery.validator.addMethod("duplicatenumber", function (value) {
-
-    //     var result;
-    //     user_id = $("#userid").val()
-    //     $.ajax({
-    //         url:"/settings/users/checknumber",
-    //         type:"POST",
-    //         async:false,
-    //         data:{"number":value,"id":user_id,csrf:$("input[name='csrf']").val() },
-    //         datatype:"json",
-    //         caches:false,
-    //         success: function (data) {
-    //             result = data.trim();
-    //         }
-    //     })
-    //     return result.trim()!="true"
-    // })
 
     // Password Change
     $(document).on('click', '#pass-con', function () {
@@ -122,7 +68,7 @@ $(document).ready(function () {
                 mob_validator: true,
                 // duplicatenumber:true
             },
-            myPassword: {
+            password: {
                 required: true,
                 pass_validator: true
 
@@ -140,8 +86,8 @@ $(document).ready(function () {
             myNumber: {
                 required: " Please Enter The Mobile Number "
             },
-            myPassword: {
-                required: "Please Enter The Password ",
+            password: {
+                required: "Please Enter The Password "
             },
 
 
