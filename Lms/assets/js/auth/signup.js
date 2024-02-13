@@ -111,11 +111,6 @@ $(document).ready(function () {
                 // fname_validator: true,
                 space: true,
             },
-            lastname: {
-                required: true,
-                // lname_validator: true,
-                space: true,
-            },
             email: {
                 required: true,
                 email_validator: true,
@@ -136,10 +131,6 @@ $(document).ready(function () {
         messages: {
             firstname: {
                 required: "Please Enter The First Name ",
-                space: "No Prefix Space "
-            },
-            lastname: {
-                required: "Please Enter Your Last Name ",
                 space: "No Prefix Space "
             },
             email: {
@@ -163,45 +154,16 @@ $(document).ready(function () {
 
 
 $(document).on("click", "#create-btn", function () {
+   
     var formcheck = $("form[name ='signupform']").valid()
-
-    var fname = $("#firstname").val()
-    var lname = $("#lastname").val()
-    var mobile = $("#myNumber").val()
-    console.log("mobile",mobile);
-    var email = $("#email").val()
-    var password = $("#myPassword").val()
+    
     if (formcheck == true) {
 
-        $.ajax({
-            url: "/memberregister",
-            method: "POST",
-            data: { "fname": fname, "lname": lname, "mobile": mobile, "email": email, "password": password },
-            datatype: 'json',
-            success: function (data) {
-                if (data.verify == "First Name Required") {
-                    var content = '<img src="/static/icons/Icon ionic-ios-close-circle.svg" class="m-0" alt="" />First Name Required'
-                    $("#firstname-error").html(content)
-                    $("#firstname-error").show()
-                } if (data.verify == "Mobile Required") {
-                    var content = '<img src="/static/icons/Icon ionic-ios-close-circle.svg" class="m-0" alt="" />Moblie Required'
-                    $("#myNumber-error").html(content)
-                    $("#myNumber-error").show()
-                } if (data.verify == "Email Required") {
-                    var content = '<img src="/static/icons/Icon ionic-ios-close-circle.svg" class="m-0" alt="" />Email Required'
-                    $("#email-error").html(content)
-                    $("#email-error").show()
-                } if (data.verify == "Password Required") {
-                    var content = '<img src="/static/icons/Icon ionic-ios-close-circle.svg" class="m-0" alt="" />Password Required'
-                    $("#myPassword-error").html(content)
-                    $("#myPassword-error").show()
-                }
-                if (data.verify == "") {
-                    window.location.href = "/login"
-                }
+        $('.spinner-border').show();
 
-            }
-        })
+        $('#create-btn').attr('disabled',true);
+
+        $("form[name ='signupform']").submit()
 
     } else {
 
@@ -223,6 +185,21 @@ $(document).on("click", "#create-btn", function () {
 
 })
 
+$(document).on('keyup', ".field", function () {
+    Validationcheck()
+    $('.ig-row').each(function () {
+        var inputField = $(this).find('input');
+        var inputName = inputField.attr('name');
+
+        if (!inputField.valid()) {
+            $(this).addClass("err");
+
+        } else {
+            $(this).removeClass("err")
+        }
+    })
+})
+
 function Validationcheck() {
     let inputGro = document.querySelectorAll('.ig-row');
     inputGro.forEach(inputGroup => {
@@ -237,3 +214,55 @@ function Validationcheck() {
 
     });
 }
+
+
+var Cookie = getCookie("Error");
+
+if (Cookie == "email+already+exists+cannot+register") {
+    
+    var content = 'Email Already Exists'
+
+    $("#email-error").html(content)
+
+    $("#email-error").show()
+
+    $('#email-error').parent('.ig-row').addClass('err')
+    
+    delete_cookie("Error")
+
+} else if (Cookie == "mobile+no+already+exists+cannot+register") {
+    
+    var content = 'Mobileno Already Exists'
+    
+    $("#myNumber-error").html(content)
+    
+    $("#myNumber-error").show()
+
+    $('#myNumber-error').parent('.ig-row').addClass('err')
+    
+    delete_cookie("Error")
+}
+
+$('#myNumber').keyup(function () {
+    this.value = this.value.replace(/[^0-9\.]/g, '');
+});
+
+// Password Change
+$(document).on('click', '#rpswdeye', function () {
+
+    var This = $("#myPassword")
+
+    if ($(This).attr('type') === 'password') {
+
+        $(This).attr('type', 'text');
+
+        $(this).addClass('active')
+
+    } else {
+
+        $(This).attr('type', 'password');
+
+        $(this).removeClass('active')
+
+    }
+})

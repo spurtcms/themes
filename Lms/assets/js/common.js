@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    
+
     let cropper = $('#crop-container').croppie({
         enableExif: true,
         enableResize: false,
@@ -85,3 +85,103 @@ $(document).ready(function () {
     })
 })
 
+
+function getCookie(cname) {
+    let name = cname + "=";
+    let ca = document.cookie.split(';');
+
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+function setCookie(cname, cvalue, exdays) {
+    const d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    let expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+
+function delete_cookie(name) {
+    console.log(name);
+    document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+
+//alert messages
+document.addEventListener("DOMContentLoaded", async function () {
+
+    var Cookie = getCookie("Success");
+    var content = Cookie.replaceAll("+", " ")
+    var msg = getCookie("Error");
+
+
+    if (Cookie != '') {
+
+        $.toast({
+            text: content, // Text that is to be shown in the toast
+            heading: 'Note', // Optional heading to be shown on the toast
+            icon: 'success', // Type of toast icon
+            showHideTransition: 'fade', // fade, slide or plain
+            allowToastClose: true, // Boolean value true or false
+            hideAfter: 3000, // false to make it sticky or number representing the miliseconds as time after which toast needs to be hidden
+            stack: 5, // false if there should be only one toast at a time or a number representing the maximum number of toasts to be shown at a time
+            position: 'top-right', // bottom-left or bottom-right or bottom-center or top-left or top-right or top-center or mid-center or an object representing the left, right, top, bottom values
+            
+            
+            
+            textAlign: 'left',  // Text alignment i.e. left, right or center
+            loader: true,  // Whether to show loader or not. True by default
+            loaderBg: '#9EC600',  // Background color of the toast loader
+            beforeShow: function () {}, // will be triggered before the toast is shown
+            afterShown: function () {}, // will be triggered after the toat has been shown
+            beforeHide: function () {}, // will be triggered before the toast gets hidden
+            afterHidden: function () {}  // will be triggered after the toast has been hidden
+        });
+
+
+    } else if (msg != '') {
+
+        console.log(msg);
+        var content = msg.replaceAll("+", " ")
+
+        $.toast({
+            text: content, // Text that is to be shown in the toast
+            heading: 'Note', // Optional heading to be shown on the toast
+            icon: 'warning', // Type of toast icon
+            showHideTransition: 'fade', // fade, slide or plain
+            allowToastClose: true, // Boolean value true or false
+            hideAfter: 3000, // false to make it sticky or number representing the miliseconds as time after which toast needs to be hidden
+            stack: 5, // false if there should be only one toast at a time or a number representing the maximum number of toasts to be shown at a time
+            position: 'top-right', // bottom-left or bottom-right or bottom-center or top-left or top-right or top-center or mid-center or an object representing the left, right, top, bottom values
+            
+            
+            
+            textAlign: 'left',  // Text alignment i.e. left, right or center
+            loader: true,  // Whether to show loader or not. True by default
+            loaderBg: '#9EC600',  // Background color of the toast loader
+            beforeShow: function () {}, // will be triggered before the toast is shown
+            afterShown: function () {}, // will be triggered after the toat has been shown
+            beforeHide: function () {}, // will be triggered before the toast gets hidden
+            afterHidden: function () {}  // will be triggered after the toast has been hidden
+        });
+
+    }
+
+    delete_cookie("Success");
+    delete_cookie("Error");
+
+})
+
+ // Initialize tooltips
+ var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+   return new bootstrap.Tooltip(tooltipTriggerEl)
+ })
