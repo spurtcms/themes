@@ -560,3 +560,6 @@ input[type=range]::-ms-thumb {
 .del-btn{
   cursor: pointer;
 }
+.clear_clr{
+  text-decoration: none;
+}

@@ -42,108 +42,8 @@ $(document).ready(function () {
         }
     });
 
-
-
-
-    // console.log("email", otp, newemail, confirmemail);
-    // if (otp == "" && newemail == "" && confirmemail == "") {
-    //     $("#memotp").show()
-    //     $("#mememail").show()
-    //     $("#mem-co-email").show()
-    //     $("#otp-con").addClass("err")
-    //     $("#email-con").addClass("err")
-    //     $("#confrimemail-con").addClass("err")
-    // } if (otp == "") {
-    //     $("#memotp").show()
-    //     $("#otp-con").addClass("err")
-
-
-    // } if (newemail == "") {
-    //     $("#mememail").show()
-    //     $("#email-con").addClass("err")
-
-
-    // } if (confirmemail == "") {
-
-    //     $("#mem-co-email").show()
-    //     $("#confrimemail-con").addClass("err")
-
-
-    // } else {
-    //     $("#memotp").hide()
-    //     $("#mememail").hide()
-    //     $("#mem-co-email").hide()
-    //     $("#otp-con").removeClass("err")
-    //     $("#email-con").removeClass("err")
-    //     $("#confrimemail-con").removeClass("err")
-
-    // }
 })
 
-// $(document).on("click", "#changeemailsubmit", function () {
-
-//     var formcheck = $("form[name ='changeemail']").valid()
-
-//     var url = window.location.search;
-//     const urlpar = new URLSearchParams(url);
-//     oldemailid = urlpar.get('changeemail');
-//     var otp = $("#otp").val()
-//     var newemail = $("#emailaddress").val()
-//     var confirmemail = $("#confirmemail").val()
-//     console.log("ss", newemail, confirmemail, otp);
-//     if (formcheck == true) {
-//         $.ajax({
-//             url: "/verify-email-otp",
-//             method: "POST",
-//             data: { "otp": otp, "newemail": newemail, "confirmemail": confirmemail, "oldemailid": oldemailid },
-//             datatype: 'json',
-//             success: function (data) {
-//                 console.log(data);
-//                 console.log(data.verify);
-//                 if (data.verify == "Otp Required") {
-//                     var content = '<img src="/static/icons/Icon ionic-ios-close-circle.svg" class="m-0" alt="" />Otp Required'
-//                     $("#otp-error").html(content)
-//                     $("#otp-error").show()
-//                 } if (data.verify == "Email Required") {
-//                     var content = '<img src="/static/icons/Icon ionic-ios-close-circle.svg" class="m-0" alt="" />Email Required'
-//                     $("#emailaddress-error").html(content)
-//                     $("#emailaddress-error").show()
-//                 } if (data.verify == "invalid otp") {
-//                     var content = 'invalid otp'
-//                     $("#otp-error").html(content)
-//                     $("#otp-error").show()
-//                     $('#otp-error').parents('.input-container').addClass("err");
-//                 } if (data.verify == "otp exipred") {
-//                     var content = 'otp exipred'
-//                     $("#otp-error").html(content)
-//                     $("#otp-error").show()
-//                     $('#otp-error').parents('.input-container').addClass("err");
-//                 } if (data.verify == "") {
-//                     window.location.href = "/myprofile"
-//                 }
-
-//             }
-//         })
-
-
-//     } else {
-
-
-//         $('.input-container').each(function () {
-//             var inputField = $(this).find('input');
-//             var inputName = inputField.attr('name');
-
-//             if (!inputField.valid()) {
-//                 $(this).addClass("err");
-
-//             } else {
-//                 $(this).removeClass("err")
-//             }
-//         })
-//     }
-
-
-// })
 
 $(document).on('keyup', ".field", function () {
     Validationcheck()
@@ -291,11 +191,6 @@ $(document).on("click", "#againotp1", function () {
                     afterHidden: function () { }  // will be triggered after the toast has been hidden
                 });
             }
-
-
-
         }
     })
-
-
 })

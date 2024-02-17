@@ -1,5 +1,4 @@
 /* ChangeEmail validation */
-
 $(document).ready(function () {
 
     $.validator.addMethod("email_validator", function (value) {
@@ -24,56 +23,6 @@ $(document).ready(function () {
 
 
 })
-
-
-// $(document).on("click", "#changepasssotpsubmit", function () {
-
-//    var formcheck = $("#psdotpform").valid()
-
-//    var email = $("#oldemail").val()
-
-//    if (formcheck == true){
-
-//     $.ajax({
-//         url: "/otp-genrate",
-//         method: "POST",
-//         data: { "email": email },
-//         datatype: 'json',
-//         success: function (data) {
-//             console.log("ok",data.verify);
-//             if (data.verify != "") {
-//                 var content = 'invalid email'
-//                 $("#oldemail-error").html(content)
-//                 $("#oldemail-error").show()
-//                 $('#oldemail-error').parents('.input-container').addClass("err");
-//             } if (data.verify == "") {
-//                 window.location.href = "/passwordchange?emailid="+email
-//             }
-
-//         }
-//     })
-
-//    }else{
-
-//     $(document).on('keyup',".field",function(){
-//         Validationcheck()
-//     })
-//    $('.input-container').each(function() {
-//     var inputField = $(this).find('input');
-//     var inputName = inputField.attr('name');
-    
-//     if (!inputField.valid()) {
-//       $(this).addClass("err");
-   
-//     } else {
-//       $(this).removeClass("err")
-//     }
-     
-//    })
-   
-// }  
-      
-// })
 
 function Validationcheck(){
     let inputGro = document.querySelectorAll('.input-container');

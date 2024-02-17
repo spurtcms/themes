@@ -481,14 +481,14 @@ header {
 
 }
 
-.center-section p {
-    text-align: left;
-    font-size: 16px;
-    margin-bottom: 10px;
-
-    letter-spacing: 0px;
-    color: #000000;
-    line-height: 26px;
+.center-section p,.center-section span {
+    text-align: left !important;
+    font-size: 16px !important;
+    margin-bottom: 10px !important;
+    font-weight: 400 !important;
+    letter-spacing: 0px !important;
+    color: #000000 !important;
+    line-height: 26px  !important;
 }
 
 /* .lgFont p {
@@ -513,6 +513,7 @@ header {
 
 .secton-content {
     margin-bottom: 32px;
+    margin-right: 5px;
 }
 
 .sid-lft-rgt-sect {
@@ -525,7 +526,7 @@ header {
     background-color: #ffffff;
     height: inherit;
     position: relative;
-    height: 100vh;
+    /* height: 100vh; */
     position: sticky;
     top: 10px;
 
@@ -559,7 +560,7 @@ header {
     padding: 16px;
     border-top: 3px solid #F6F8FC;
     overflow: auto;
-    height: 100vh;
+    height: calc(100vh - 22rem);
 
 }
 
@@ -595,7 +596,7 @@ header {
 .note-content-detail {
     border-bottom: 3px solid #F9F9F9;
     margin-bottom: 12px;
-
+    margin-right: 27px ;
 }
 
 .note-content-detail:last-child {
